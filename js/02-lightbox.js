@@ -6,7 +6,6 @@ const pictureMarcup = creatingGalleryPictures(galleryItems);
 const galleryConteiner = document.querySelector(".gallery");
 
 galleryConteiner.insertAdjacentHTML("beforeend", pictureMarcup);
-galleryConteiner.addEventListener("click", onPictureClick);
 
 // Створення та рендер розмітки по масиву даних
 function creatingGalleryPictures(gallery) {
@@ -31,23 +30,6 @@ let lightbox = new SimpleLightbox(".gallery a", {
   captionDelay: 250,
 });
 
-function onPictureClick(evt) {
-  evt.preventDefault();
 
-  checkingCurrentEvent(evt);
-
-  lightbox.on("closed.simplelightbox", refreshSimplelightbox);
-}
-
-function checkingCurrentEvent(evt) {
-  const picture = evt.target.classList.contains("gallery__image");
-  if (!picture) {
-    return;
-  }
-}
-
-function refreshSimplelightbox() {
-  lightbox.refresh();
-}
 
 console.log(galleryItems);
